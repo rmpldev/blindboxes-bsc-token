@@ -14,8 +14,8 @@ contract BLES is ERC20("Blind Boxes Token", "BLES"), LGEWhitelisted {
     }
 
     function _transfer(address sender, address recipient, uint256 amount) internal override virtual {
-        _applyLGEWhitelist(sender, recipient, amount);
-        super._transfer(sender, recipient, amount);
+        LGEWhitelisted._applyLGEWhitelist(sender, recipient, amount);
+        ERC20._transfer(sender, recipient, amount);
     }
 
     function burn(uint256 _amount) external {
