@@ -134,11 +134,6 @@ contract LGEWhitelisted is Context {
         return (0, 0, 0, 0, false, 0);
     }
     
-    /*
-     * _applyLGEWhitelist - internal function to be called initially before any transfers
-     * 
-     */
-    
     function _applyLGEWhitelist(address sender, address recipient, uint256 amount) internal {
         
         require(_lgeWhitelistRounds.length > 0, "No whitelist rounds defined");
@@ -152,7 +147,7 @@ contract LGEWhitelisted is Context {
             
             (uint256 wlRoundNumber,,,,,) = getLGEWhitelistRound();
         
-            if(wlRoundNumber > 0) { // since you cannot transfer until you set the pair address, the conditions where the outer if statement are true prevent wlRounNumber from being 0 
+            if(wlRoundNumber > 0) {
                 
                 WhitelistRound storage wlRound = _lgeWhitelistRounds[wlRoundNumber.sub(1)];
                 
